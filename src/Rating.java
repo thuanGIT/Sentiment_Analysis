@@ -17,7 +17,7 @@ public class Rating {
 
     @Override
     public String toString() {
-        return String.format("\nWord: %-10sRating: %-10.4f\tTotal occurrence: %-10d", word, averageRating(),occurence);
+        return String.format("\nWord: %-12sRating: %-12.4f\tTotal occurrence: %-12d", word, averageRating(),occurence);
 
     }
     

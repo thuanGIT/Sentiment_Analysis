@@ -72,6 +72,8 @@ public class Analysis {
                 
                 
                 ratingList.sort((choice == 3)? new MaxComparator(): new MinComparator());
+                System.out.println(ratingList);
+                
                 System.out.println(title);
                 for (int start = ratingList.size()- 5; start <= ratingList.size() - 1; start ++) {
                     System.out.println(ratingList.get(start));
@@ -122,7 +124,7 @@ public class Analysis {
                         if (reviews.containsKey(words[i])) {
                             reviews.get(words[i]).appearOnceMore();
                             boolean duplicate = false;
-                            for (int j = i - 1; j > 0; j--) {
+                            for (int j = i - 1; j > 1; j--) {
                                 if (words[j].equals(words[i])) {
                                     duplicate = true;
                                     break;
