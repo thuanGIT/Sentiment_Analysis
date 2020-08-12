@@ -17,7 +17,7 @@ public class Rating {
 
     @Override
     public String toString() {
-        return String.format("\nWord: %s\tRating: %.2f\tTotal occurrence: %d", word, averageRating(),occurence);
+        return String.format("\nWord: %-10sRating: %-10.4f\tTotal occurrence: %-10d", word, averageRating(),occurence);
 
     }
     
@@ -25,7 +25,7 @@ public class Rating {
 
 
 
-class RatingComparator implements Comparator<Rating> {
+class MaxComparator implements Comparator<Rating> {
 
     @Override
     public int compare(Rating o1, Rating o2) {
@@ -33,8 +33,31 @@ class RatingComparator implements Comparator<Rating> {
             return 1;
         else if (o1.averageRating() < o2.averageRating())
             return -1;
-        else
-            return 0;
+        else {
+            if (o1.occurence > 1 && o2.occurence <= 1)
+                return 1;
+            else if (o1.occurence <= 1 && o2.occurence > 1)
+                return -1;
+            else return 0;
+        }
+    }
+
+}
+
+class MinComparator implements Comparator<Rating> {
+    @Override
+    public int compare(Rating o1, Rating o2) {
+        if (o1.averageRating() < o2.averageRating())
+            return 1;
+        else if (o1.averageRating() > o2.averageRating())
+            return -1;
+        else {
+            if (o1.occurence > 1 && o2.occurence <= 1)
+                return 1;
+            else if (o1.occurence <= 1 && o2.occurence > 1)
+                return -1;
+            else return 0;
+        }
     }
 
 }

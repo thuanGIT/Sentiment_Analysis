@@ -29,6 +29,7 @@ public class Analysis {
         //Debugging
         //reviews.forEach((key,value) -> {System.out.println(key + ": " + value);});
         //System.out.println(reviews.get("movie").occurence);
+        System.out.println("\n");
 
 
         while (choice!= 5) {
@@ -66,22 +67,13 @@ public class Analysis {
 
             } else if (choice == 3 || choice == 4) {
                 ArrayList<Rating> ratingList = new ArrayList<Rating>(reviews.values());
-                ratingList.sort(new RatingComparator());
-                //System.out.println(ratingList);
-
-                int i = 0;
-                while (i < ratingList.size()) {
-                    if (ratingList.get(i).occurence < 2)
-                        ratingList.remove(i);
-                    i++;
-                }
-
-                System.out.println(ratingList);
-
-                
-
                 String title =  "Top 5 most " + ((choice == 3)? "positive": "negative") + " words with more than one occurrence";
-                for (int start = (choice == 3)? 0: ratingList.size()- 5; start <= ((choice == 3)? 4: ratingList.size() - 1); start ++) {
+                
+                
+                
+                ratingList.sort((choice == 3)? new MaxComparator(): new MinComparator());
+                System.out.println(title);
+                for (int start = ratingList.size()- 5; start <= ratingList.size() - 1; start ++) {
                     System.out.println(ratingList.get(start));
                 }             
             }
@@ -90,23 +82,8 @@ public class Analysis {
             choice = getChoice(menu, input);
         }
 
-
-
-
-
         System.out.println("Thank you. Good bye!");
         input.close();
-
-        
-
-        
-
-        
-
-        
-
-
-        
         
     }
 
